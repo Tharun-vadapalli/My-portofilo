@@ -1,589 +1,772 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Tharun Vadapalli | Full Stack Java Developer</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fa;
-            color: #222;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: #ffffff;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .navbar {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 25px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #1976d2;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-weight: 600;
-            color: #333;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #1976d2;
-        }
-
-        .menu-btn {
-            display: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: #1976d2;
-        }
-
-        /* ================= COMMON ================= */
-
-        section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 80px 25px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title h2 {
-            font-size: 35px;
-            color: #1976d2;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #777;
-        }
-
-        /* ================= HOME ================= */
-
-        #home {
-            max-width: none;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(
-                135deg,
-                #ffffff,
-                #eef6ff
-            );
-        }
-
-        .hero {
-            width: 1200px;
-            max-width: 100%;
-            margin: auto;
-            padding: 50px 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* Profile image ABOVE Hello, I'm */
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .hero-image img {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 7px solid white;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.18);
-        }
-
-        .hero-text {
-            max-width: 850px;
-        }
-
-        .hero-text h4 {
-            font-size: 22px;
-            color: #1976d2;
-            margin-bottom: 10px;
-        }
-
-        .hero-text h1 {
-            font-size: 52px;
-            line-height: 1.15;
-            margin-bottom: 15px;
-            color: #111;
-        }
-
-        .hero-text h2 {
-            font-size: 28px;
-            color: #1976d2;
-            margin-bottom: 20px;
-        }
-
-        .hero-text p {
-            max-width: 750px;
-            margin: 0 auto 30px;
-            color: #555;
-            font-size: 17px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 25px;
-            border-radius: 7px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-primary {
-            background: #1976d2;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #0d5ca8;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            border: 2px solid #1976d2;
-            color: #1976d2;
-        }
-
-        .btn-outline:hover {
-            background: #1976d2;
-            color: white;
-        }
-
-        /* ================= ABOUT ================= */
-
-        .about-content {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
-        }
-
-        .about-content p {
-            margin-bottom: 18px;
-            color: #555;
-            font-size: 17px;
-        }
-
-        /* ================= SKILLS ================= */
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .skill-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-            transition: 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-card h3 {
-            color: #1976d2;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        .skill-card p {
-            color: #555;
-            font-size: 16px;
-        }
-
-        /* ================= PROJECTS ================= */
-
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 22px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-7px);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background: #e9eef5;
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-content h3 {
-            color: #1976d2;
-            font-size: 22px;
-            margin-bottom: 12px;
-        }
-
-        .project-content p {
-            color: #555;
-            margin-bottom: 15px;
-            font-size: 15px;
-        }
-
-        .tech {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 18px;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .project-link {
-            color: #1976d2;
-            font-weight: 700;
-            transition: 0.3s;
-        }
-
-        .project-link:hover {
-            color: #0d5ca8;
-            text-decoration: underline;
-        }
-
-        /* ================= CERTIFICATES ================= */
-
-        .certificate-box {
-            background: white;
-            padding: 50px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-        }
-
-        .certificate-box h3 {
-            font-size: 28px;
-            color: #1976d2;
-        }
-
-        /* ================= CONTACT ================= */
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .contact-card {
-            background: white;
-            padding: 28px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-            transition: 0.3s;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-card h3 {
-            color: #1976d2;
-            margin-bottom: 10px;
-        }
-
-        .contact-card p,
-        .contact-card a {
-            color: #555;
-            word-break: break-word;
-        }
-
-        .contact-card a:hover {
-            color: #1976d2;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-
-        /* ================= RESPONSIVE ================= */
-
-        @media (max-width: 900px) {
-
-            .projects-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .contact-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 700px) {
-
-            .menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: white;
-                display: none;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .logo {
-                font-size: 17px;
-            }
-
-            .hero {
-                padding: 40px 18px;
-            }
-
-            .hero-image img {
-                width: 250px;
-                height: 250px;
-            }
-
-            .hero-text h1 {
-                font-size: 40px;
-            }
-
-            .hero-text h2 {
-                font-size: 24px;
-            }
-
-            .skills-container,
-            .projects-container,
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 60px 18px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tharun Vadapalli | Full Stack Java Developer</title>
+
+<style>
+
+/* =========================
+   THEME VARIABLES
+========================= */
+
+:root {
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --text: #222222;
+    --text-light: #555555;
+    --heading: #111111;
+    --primary: #1976d2;
+    --primary-dark: #0d5ca8;
+    --header: #ffffff;
+    --footer: #111111;
+    --border: rgba(0,0,0,0.08);
+    --shadow: rgba(0,0,0,0.10);
+    --hero-bg: linear-gradient(135deg,#ffffff,#eef6ff);
+}
+
+/* =========================
+   DARK THEME
+========================= */
+
+body.dark-theme {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --text: #f0f6fc;
+    --text-light: #b8c1cc;
+    --heading: #ffffff;
+    --primary: #42a5f5;
+    --primary-dark: #64b5f6;
+    --header: #11161d;
+    --footer: #05080c;
+    --border: rgba(255,255,255,0.10);
+    --shadow: rgba(0,0,0,0.40);
+    --hero-bg: linear-gradient(135deg,#0d1117,#111d2b);
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--header);
+    box-shadow: 0 2px 15px var(--shadow);
+    transition: 0.3s ease;
+}
+
+.nav-container {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    position: relative;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   THEME BUTTON
+   RIGHT SIDE OF NAVIGATION
+========================= */
+
+.theme-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 3px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.theme-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: rotate(15deg) scale(1.08);
+}
+
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
+
+.menu-btn {
+    display: none;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+#home {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: var(--hero-bg);
+    padding: 70px 0;
+    transition: 0.3s ease;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+}
+
+.profile-image {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    border: 5px solid var(--primary);
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.hello {
+    font-size: 20px;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.hero-content h1 {
+    font-size: 52px;
+    color: var(--heading);
+    margin-bottom: 10px;
+}
+
+.hero-content h2 {
+    font-size: 28px;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    max-width: 750px;
+    margin: auto;
+    color: var(--text-light);
+    font-size: 17px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    color: var(--heading);
+    margin-bottom: 10px;
+}
+
+.section-title span {
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    margin: auto;
+    border-radius: 5px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-content {
+    max-width: 900px;
+    margin: auto;
+    background: var(--surface);
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.about-content p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 25px;
+}
+
+.skill-card {
+    background: var(--surface);
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px var(--shadow);
+    border: 1px solid var(--border);
+    transition: 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+}
+
+.skill-card h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.skill-card p {
+    color: var(--text-light);
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--surface);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow);
+    border: 1px solid var(--border);
+    transition: 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.project-content {
+    padding: 25px;
+}
+
+.project-content h3 {
+    color: var(--heading);
+    margin-bottom: 12px;
+}
+
+.project-content p {
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.tech {
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.project-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.small-btn {
+    padding: 9px 15px;
+    border-radius: 5px;
+    background: var(--primary);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.small-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* =========================
+   CERTIFICATES
+========================= */
+
+#certificates {
+    background: var(--surface);
+}
+
+.coming-soon {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--primary);
+    padding: 50px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.contact-info,
+.contact-box {
+    background: var(--surface);
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.contact-info h3,
+.contact-box h3 {
+    color: var(--heading);
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+.contact-info a {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-box p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: var(--footer);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:1000px) {
+
+    .skills-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+}
+
+@media (max-width:768px) {
+
+    .nav-container {
+        min-height: 65px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        display: none;
+
+        position: absolute;
+        top: 65px;
+        left: 0;
+
+        width: 100%;
+
+        background: var(--header);
+
+        flex-direction: column;
+
+        padding: 25px;
+
+        gap: 20px;
+
+        box-shadow: 0 10px 20px var(--shadow);
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    .theme-btn {
+        margin-left: 0;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-content h2 {
+        font-size: 23px;
+    }
+
+    .profile-image {
+        width: 145px;
+        height: 145px;
+    }
+
+    .skills-grid,
+    .projects-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width:480px) {
+
+    .logo {
+        font-size: 14px;
+    }
+
+    .hero-content h1 {
+        font-size: 31px;
+    }
+
+    .hero-content h2 {
+        font-size: 20px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .about-content,
+    .contact-info,
+    .contact-box {
+        padding: 25px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
-    <header>
+<header>
 
-        <nav class="navbar">
+    <div class="container nav-container">
 
-            <div class="logo">
-                Tharun | Full Stack Java Developer
-            </div>
+        <div class="logo">
+            Tharun | Full Stack Java Developer
+        </div>
 
-            <div class="menu-btn" onclick="toggleMenu()">
-                ☰
-            </div>
+        <nav id="navMenu">
 
-            <ul class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
 
-                <li>
-                    <a href="#home">Home</a>
-                </li>
+            <a href="#about">About</a>
 
-                <li>
-                    <a href="#about">About</a>
-                </li>
+            <a href="#skills">Skills</a>
 
-                <li>
-                    <a href="#skills">Skills</a>
-                </li>
+            <a href="#projects">Projects</a>
 
-                <li>
-                    <a href="#projects">Projects</a>
-                </li>
+            <a href="#certificates">Certificates</a>
 
-                <li>
-                    <a href="#certificates">Certificates</a>
-                </li>
+            <a href="#contact">Contact</a>
 
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
+            <a href="https://github.com/Tharun-vadapalli"
+               target="_blank">
+                GitHub
+            </a>
 
-                <li>
-                    <a
-                        href="https://github.com/Tharun-vadapalli"
-                        target="_blank">
-                        GitHub
-                    </a>
-                </li>
-
-            </ul>
+            <!-- THEME BUTTON AT RIGHT SIDE -->
+            <button
+                class="theme-btn"
+                id="themeBtn"
+                onclick="toggleTheme()"
+                aria-label="Switch to dark theme">
+                🌙
+            </button>
 
         </nav>
 
-    </header>
+        <button
+            class="menu-btn"
+            onclick="toggleMenu()"
+            aria-label="Open menu">
+            ☰
+        </button>
+
+    </div>
+
+</header>
 
 
-    <!-- ================= HOME ================= -->
+<!-- =========================
+     HOME
+========================= -->
 
-    <section id="home">
+<section id="home">
 
-        <div class="hero">
+    <div class="container">
 
-            <!-- PROFILE IMAGE ABOVE HELLO -->
+        <div class="hero-content">
 
-            <div class="hero-image">
+            <img
+                class="profile-image"
+                src="https://drive.google.com/thumbnail?id=1rIHpiqZ6UsulXcz0rRWSSjrlQwRUw2_m&sz=w1000"
+                alt="Tharun Vadapalli">
 
-                <img
-                    src="https://drive.google.com/thumbnail?id=1rIHpiqZ6UsulXcz0rRWSSjrlQwRUw2_m&sz=w1000"
-                    alt="Tharun Vadapalli Profile Image">
-
+            <div class="hello">
+                Hello, I'm
             </div>
 
+            <h1>
+                Tharun Vadapalli
+            </h1>
 
-            <div class="hero-text">
+            <h2>
+                Full Stack Java Developer
+            </h2>
 
-                <h4>
-                    Hello, I'm
-                </h4>
+            <p>
+                I am a passionate and detail-oriented Java Developer
+                with a strong foundation in Object-Oriented Programming,
+                databases and modern web technologies. I enjoy building
+                practical applications and continuously improving my
+                programming skills.
+            </p>
 
-                <h1>
-                    Tharun Vadapalli
-                </h1>
+            <div class="buttons">
 
-                <h2>
-                    Full Stack Java Developer
-                </h2>
+                <a
+                    href="https://tharun-vadapalli.github.io/My-portofilo/"
+                    target="_blank"
+                    class="btn btn-primary">
+                    View Resume
+                </a>
 
-                <p>
-                    I am a passionate and detail-oriented Java Developer
-                    with a strong foundation in Object-Oriented Programming,
-                    databases and modern web technologies. I enjoy building
-                    practical applications and continuously improving my
-                    programming skills.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a
-                        href="https://tharun-vadapalli.github.io/My-portofilo/"
-                        target="_blank"
-                        class="btn btn-primary">
-                        View Resume
-                    </a>
-
-                    <a
-                        href="#contact"
-                        class="btn btn-outline">
-                        Contact Me
-                    </a>
-
-                </div>
+                <a
+                    href="#contact"
+                    class="btn btn-outline">
+                    Contact Me
+                </a>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= ABOUT ================= -->
+<!-- =========================
+     ABOUT
+========================= -->
 
-    <section id="about">
+<section id="about">
+
+    <div class="container">
 
         <div class="section-title">
 
             <h2>About Me</h2>
 
-            <p>
-                Know more about me
-            </p>
+            <span></span>
 
         </div>
 
@@ -598,40 +781,44 @@
 
             <p>
                 My technical foundation includes Core Java, OOP, JDBC,
-                MySQL, Oracle, SQL, HTML5, CSS3 and JavaScript. I enjoy
-                learning new technologies, solving programming problems
-                and developing useful projects.
+                MySQL, Oracle, SQL, HTML5, CSS3 and JavaScript.
+                I enjoy learning new technologies, solving programming
+                problems and developing useful projects.
             </p>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= SKILLS ================= -->
+<!-- =========================
+     SKILLS
+========================= -->
 
-    <section id="skills">
+<section id="skills">
+
+    <div class="container">
 
         <div class="section-title">
 
-            <h2>Skills</h2>
+            <h2>My Skills</h2>
 
-            <p>
-                My technical skills
-            </p>
+            <span></span>
 
         </div>
 
-        <div class="skills-container">
+        <div class="skills-grid">
 
             <div class="skill-card">
 
-                <h3>
-                    Frontend
-                </h3>
+                <h3>Frontend</h3>
 
                 <p>
-                    HTML5, CSS3, JavaScript
+                    HTML5<br>
+                    CSS3<br>
+                    JavaScript
                 </p>
 
             </div>
@@ -639,12 +826,12 @@
 
             <div class="skill-card">
 
-                <h3>
-                    Backend
-                </h3>
+                <h3>Backend</h3>
 
                 <p>
-                    Core Java, OOP, JDBC
+                    Core Java<br>
+                    Object-Oriented Programming<br>
+                    JDBC
                 </p>
 
             </div>
@@ -652,12 +839,12 @@
 
             <div class="skill-card">
 
-                <h3>
-                    Database
-                </h3>
+                <h3>Database</h3>
 
                 <p>
-                    MySQL, Oracle, SQL
+                    MySQL<br>
+                    Oracle<br>
+                    SQL
                 </p>
 
             </div>
@@ -665,39 +852,41 @@
 
             <div class="skill-card">
 
-                <h3>
-                    Tools
-                </h3>
+                <h3>Tools</h3>
 
                 <p>
-                    Eclipse, VS Code, Git, GitHub
+                    Eclipse<br>
+                    VS Code<br>
+                    Git<br>
+                    GitHub
                 </p>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= PROJECTS ================= -->
+<!-- =========================
+     PROJECTS
+========================= -->
 
-    <section id="projects">
+<section id="projects">
+
+    <div class="container">
 
         <div class="section-title">
 
-            <h2>
-                Projects
-            </h2>
+            <h2>My Projects</h2>
 
-            <p>
-                Some of my projects
-            </p>
+            <span></span>
 
         </div>
 
-
-        <div class="projects-container">
+        <div class="projects-grid">
 
 
             <!-- BOOK MY SHOW -->
@@ -705,7 +894,6 @@
             <div class="project-card">
 
                 <img
-                    class="project-image"
                     src="https://drive.google.com/thumbnail?id=1_jqwo4WXmCzBjedxFCcJlSAPmQGU8GdE&sz=w1000"
                     alt="Book My Show Project">
 
@@ -716,11 +904,11 @@
                     </h3>
 
                     <p>
-                        A Java-based Book My Show application using a
-                        file-based database approach, designed to practice
-                        OOP, collections, input handling and application
-                        logic. And this is my first 1000+ lines of code.
-                        It is CLI project.
+                        A Java-based Book My Show application using
+                        a file-based database approach, designed to
+                        practice OOP, collections, input handling and
+                        application logic. And this is my first
+                        1000+ lines of code. It is CLI project.
                     </p>
 
                     <div class="tech">
@@ -732,14 +920,14 @@
                         <a
                             href="https://vijay-neelam.github.io/BookMyShow/"
                             target="_blank"
-                            class="project-link">
+                            class="small-btn">
                             Live Project
                         </a>
 
                         <a
                             href="https://github.com/Tharun-vadapalli"
                             target="_blank"
-                            class="project-link">
+                            class="small-btn">
                             GitHub
                         </a>
 
@@ -755,7 +943,6 @@
             <div class="project-card">
 
                 <img
-                    class="project-image"
                     src="https://drive.google.com/thumbnail?id=17Q-on22Dx6HJU_rqZSW3E13gtFqs1ao-&sz=w1000"
                     alt="DHV Books Project">
 
@@ -780,14 +967,14 @@
                         <a
                             href="https://tharun-vadapalli.github.io/DHV-Books/"
                             target="_blank"
-                            class="project-link">
+                            class="small-btn">
                             Live Project
                         </a>
 
                         <a
                             href="https://github.com/Tharun-vadapalli/DHV-Books"
                             target="_blank"
-                            class="project-link">
+                            class="small-btn">
                             GitHub
                         </a>
 
@@ -803,7 +990,6 @@
             <div class="project-card">
 
                 <img
-                    class="project-image"
                     src="https://drive.google.com/thumbnail?id=1rIHpiqZ6UsulXcz0rRWSSjrlQwRUw2_m&sz=w1000"
                     alt="My Profile Project">
 
@@ -829,14 +1015,14 @@
                         <a
                             href="https://tharun-vadapalli.github.io/My-portofilo/"
                             target="_blank"
-                            class="project-link">
+                            class="small-btn">
                             Resume
                         </a>
 
                         <a
                             href="https://github.com/Tharun-vadapalli/My-portofilo"
                             target="_blank"
-                            class="project-link">
+                            class="small-btn">
                             GitHub
                         </a>
 
@@ -848,183 +1034,284 @@
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= CERTIFICATES ================= -->
+<!-- =========================
+     CERTIFICATES
+========================= -->
 
-    <section id="certificates">
+<section id="certificates">
 
-        <div class="section-title">
-
-            <h2>
-                Certificates
-            </h2>
-
-            <p>
-                My achievements and certifications
-            </p>
-
-        </div>
-
-        <div class="certificate-box">
-
-            <h3>
-                Coming Soon...
-            </h3>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CONTACT ================= -->
-
-    <section id="contact">
+    <div class="container">
 
         <div class="section-title">
 
-            <h2>
-                Contact Me
-            </h2>
+            <h2>Certificates</h2>
 
-            <p>
-                Let's connect
-            </p>
+            <span></span>
 
         </div>
 
+        <div class="coming-soon">
+            Coming Soon...
+        </div>
 
-        <div class="contact-container">
+    </div>
 
-            <div class="contact-card">
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Contact Me</h2>
+
+            <span></span>
+
+        </div>
+
+        <div class="contact-grid">
+
+
+            <div class="contact-info">
 
                 <h3>
-                    Location
+                    Get In Touch
                 </h3>
 
                 <p>
+                    📍
+                    <strong>Location:</strong>
                     Eluru, Andhra Pradesh, India
+                </p>
+
+                <p>
+                    📱
+                    <strong>Phone:</strong>
+
+                    <a href="tel:+919133461625">
+                        +91 9133461625
+                    </a>
+                </p>
+
+                <p>
+                    📧
+                    <strong>Email:</strong>
+
+                    <a href="mailto:vtharun436@gmail.com">
+                        vtharun436@gmail.com
+                    </a>
+                </p>
+
+                <p>
+                    💼
+                    <strong>LinkedIn:</strong>
+
+                    <a
+                        href="https://www.linkedin.com/in/tharun-vadapalli?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                        target="_blank">
+                        LinkedIn Profile
+                    </a>
+                </p>
+
+                <p>
+                    🐙
+                    <strong>GitHub:</strong>
+
+                    <a
+                        href="https://github.com/Tharun-vadapalli"
+                        target="_blank">
+                        GitHub Profile
+                    </a>
+                </p>
+
+                <p>
+                    📸
+                    <strong>Instagram:</strong>
+
+                    <a
+                        href="https://www.instagram.com/tharun_436?stkn=MWU5b2VteTV6bnRrbg=="
+                        target="_blank">
+                        Instagram Profile
+                    </a>
                 </p>
 
             </div>
 
 
-            <div class="contact-card">
+            <div class="contact-box">
 
                 <h3>
-                    Phone
+                    Let's Connect
                 </h3>
 
-                <a href="tel:+919133461625">
-                    +91 9133461625
-                </a>
-
-            </div>
-
-
-            <div class="contact-card">
-
-                <h3>
-                    Email
-                </h3>
-
-                <a href="mailto:vtharun436@gmail.com">
-                    vtharun436@gmail.com
-                </a>
-
-            </div>
-
-
-            <div class="contact-card">
-
-                <h3>
-                    LinkedIn
-                </h3>
+                <p>
+                    I am open to internship opportunities,
+                    entry-level roles and learning opportunities
+                    in software development.
+                </p>
 
                 <a
-                    href="https://www.linkedin.com/in/tharun-vadapalli?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                    target="_blank">
-                    LinkedIn Profile
-                </a>
-
-            </div>
-
-
-            <div class="contact-card">
-
-                <h3>
-                    GitHub
-                </h3>
-
-                <a
-                    href="https://github.com/Tharun-vadapalli"
-                    target="_blank">
-                    github.com/Tharun-vadapalli
-                </a>
-
-            </div>
-
-
-            <div class="contact-card">
-
-                <h3>
-                    Instagram
-                </h3>
-
-                <a
-                    href="https://www.instagram.com/tharun_436?stkn=MWU5b2VteTV6bnRrbg=="
-                    target="_blank">
-                    @tharun_436
+                    href="mailto:vtharun436@gmail.com"
+                    class="btn btn-primary">
+                    Send Email
                 </a>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= FOOTER ================= -->
+<!-- =========================
+     FOOTER
+========================= -->
 
-    <footer>
+<footer>
 
-        <p>
-            © 2026 Tharun Vadapalli. All Rights Reserved.
-        </p>
+    <p>
+        © 2026 Tharun Vadapalli. All Rights Reserved.
+    </p>
 
-    </footer>
+</footer>
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
-    <script>
+<script>
 
-        function toggleMenu() {
+/* =========================
+   MOBILE MENU
+========================= */
 
-            const navLinks =
-                document.getElementById("navLinks");
+function toggleMenu() {
 
-            navLinks.classList.toggle("active");
+    const navMenu = document.getElementById("navMenu");
+
+    navMenu.classList.toggle("active");
+
+}
+
+
+/* =========================
+   THEME TOGGLE
+========================= */
+
+const themeBtn = document.getElementById("themeBtn");
+
+
+function updateThemeIcon() {
+
+    if (document.body.classList.contains("dark-theme")) {
+
+        themeBtn.textContent = "☀️";
+
+        themeBtn.setAttribute(
+            "aria-label",
+            "Switch to light theme"
+        );
+
+    } else {
+
+        themeBtn.textContent = "🌙";
+
+        themeBtn.setAttribute(
+            "aria-label",
+            "Switch to dark theme"
+        );
+
+    }
+
+}
+
+
+function toggleTheme() {
+
+    document.body.classList.toggle("dark-theme");
+
+    if (
+        document.body.classList.contains("dark-theme")
+    ) {
+
+        localStorage.setItem(
+            "portfolioTheme",
+            "dark"
+        );
+
+    } else {
+
+        localStorage.setItem(
+            "portfolioTheme",
+            "light"
+        );
+
+    }
+
+    updateThemeIcon();
+
+}
+
+
+/* =========================
+   LOAD SAVED THEME
+========================= */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const savedTheme =
+            localStorage.getItem("portfolioTheme");
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add("dark-theme");
 
         }
 
+        updateThemeIcon();
 
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach(function(link) {
+    }
+);
 
-                link.addEventListener("click", function() {
 
-                    document
-                        .getElementById("navLinks")
-                        .classList.remove("active");
+/* =========================
+   CLOSE MOBILE MENU
+========================= */
 
-                });
+document
+    .querySelectorAll("#navMenu a")
+    .forEach(function(link) {
 
-            });
+        link.addEventListener(
+            "click",
+            function() {
 
-    </script>
+                document
+                    .getElementById("navMenu")
+                    .classList.remove("active");
+
+            }
+        );
+
+    });
+
+</script>
 
 </body>
 </html>
